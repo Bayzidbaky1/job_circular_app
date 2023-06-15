@@ -82,7 +82,7 @@ class _BankState extends State<Bank> {
                             ),
                           ),
                         ),
-                        Text(
+                        Text( 
                           Datas![index].name.toString(),
                           style: TextStyle(
                               color: Colors.black54,

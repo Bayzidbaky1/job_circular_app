@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jobs_circular_bd/pages/home.dart';
 
@@ -12,11 +13,11 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BD Jobs Circular',
       theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
+        textTheme: GoogleFonts.loraTextTheme(),
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: AppColor.bg_color,
       ),

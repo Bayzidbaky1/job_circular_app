@@ -1,21 +1,21 @@
 // To parse this JSON data, do
 //
-//     final allDataModel = allDataModelFromJson(jsonString);
+//     final govtJobsModel = govtJobsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-AllDataModel allDataModelFromJson(String str) => AllDataModel.fromJson(json.decode(str));
+GovtJobsModel govtJobsModelFromJson(String str) => GovtJobsModel.fromJson(json.decode(str));
 
-String allDataModelToJson(AllDataModel data) => json.encode(data.toJson());
+String govtJobsModelToJson(GovtJobsModel data) => json.encode(data.toJson());
 
-class AllDataModel {
+class GovtJobsModel {
     List<Datum>? data;
 
-    AllDataModel({
+    GovtJobsModel({
         this.data,
     });
 
-    factory AllDataModel.fromJson(Map<String, dynamic> json) => AllDataModel(
+    factory GovtJobsModel.fromJson(Map<String, dynamic> json) => GovtJobsModel(
         data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
 
@@ -29,7 +29,7 @@ class Datum {
     String? applyLink;
     String? deadline;
     String? type;
-    List<ImageModel>? images;
+    List<ImageMOdel>? images;
     String? description;
 
     Datum({
@@ -46,7 +46,7 @@ class Datum {
         applyLink: json["apply_link"],
         deadline: json["deadline"],
         type: json["type"],
-        images: json["images"] == null ? [] : List<ImageModel>.from(json["images"]!.map((x) => ImageModel.fromJson(x))),
+        images: json["images"] == null ? [] : List<ImageMOdel>.from(json["images"]!.map((x) => ImageMOdel.fromJson(x))),
         description: json["description"],
     );
 
@@ -60,14 +60,14 @@ class Datum {
     };
 }
 
-class ImageModel {
+class ImageMOdel {
     String? url;
 
-    ImageModel({
+    ImageMOdel({
         this.url,
     });
 
-    factory ImageModel.fromJson(Map<String, dynamic> json) => ImageModel(
+    factory ImageMOdel.fromJson(Map<String, dynamic> json) => ImageMOdel(
         url: json["url"],
     );
 

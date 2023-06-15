@@ -2,17 +2,17 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../model/jobs_model.dart';
+import '../model/govt_jobs_model.dart';
 
-class JobsHelper {
-  Future<AllDataModel?> getData() async {
+class GovtJobsHelper {
+  Future<GovtJobsModel?> getData() async {
     var client = http.Client();
     var response =
-        await client.get(Uri.parse(" http://api.emearn365.com/api/jobs"));
+        await client.get(Uri.parse("https://api.emearn365.com/api/govt/jobs"));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
 
-      return AllDataModel.fromJson(data);
+      return GovtJobsModel.fromJson(data);
     }else{
       return null;
     }

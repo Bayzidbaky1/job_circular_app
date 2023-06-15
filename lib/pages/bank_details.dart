@@ -9,7 +9,7 @@ class BankDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        centerTitle: true, 
         title: Text(data["email"].toString()),
       ),
       body: Card(
