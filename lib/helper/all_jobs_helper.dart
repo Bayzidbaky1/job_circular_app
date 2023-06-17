@@ -1,19 +1,20 @@
-// import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-// import '../model/all_jobs_model.dart';
+import 'package:http/http.dart' as http;
 
-// class AllJobsHelper{
-//   Future<List<AllJobsModel>?> getAllJobs()async{
+import '../model/all_jobs_model.dart';
 
-//     var response = await http.get(Uri.parse(" http://api.emearn365.com/api/jobs"));
+class AllJobsHelper {
+  Future<AllJobsModel?> getData() async {
+    var client = http.Client();
+    var response =
+        await client.get(Uri.parse("http://api.emearn365.com/api/jobs"));
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
 
-//     if(response.statusCode == 200){
-//       var data = response.body;
-
-//       print(data);
-
-//       return [allJobsModelFromJson(data)];
-//     }
-    
-//   }
-// }
+      return AllJobsModel.fromJson(data);
+    } else {
+      return null;
+    }
+  }
+}

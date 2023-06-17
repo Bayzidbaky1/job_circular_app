@@ -42,13 +42,23 @@ class _GovtState extends State<Govt> {
                   return GestureDetector(
                     
                     onTap: () {
-                      Get.to(GovtDetails(Datas:{
-                        'title': dataModel!.data![index].title,
-                        'deadline': dataModel!.data![index].deadline,
-                        'applylink': dataModel!.data![index].applyLink,
-                        'images': dataModel!.data![index].images![index].url
-                            ,
-                      }));
+                      Get.to(() => GovtDetails(), arguments: [
+                        {
+                          'title': dataModel!.data![index].title,
+                        },
+                        {
+                          'deadline': dataModel!.data![index].deadline,
+                        },
+                        {
+                          'applylink': dataModel!.data![index].applyLink,
+                        },
+                        {
+                          'type': dataModel!.data![index].type,
+                        },
+                        {
+                          'images': dataModel!.data![index].images,
+                        }
+                      ]);;
                     },
                     child: Card(
                       elevation: 3,
@@ -75,24 +85,7 @@ class _GovtState extends State<Govt> {
                                   fontStyle: FontStyle.italic,
                                   color: AppColor.button_color),
                             ),
-                            Container(
-                              height: 500,
-                              width: MediaQuery.of(context).size.width,
-                              child: Image.network(
-                                dataModel!.data![index].images![0].url
-                                    .toString(),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            // Container(
-                            //   height: 500,
-                            //   width: MediaQuery.of(context).size.width,
-                            //   child: Image.network(
-                            //     dataModel!.data![index].images![1].url
-                            //         .toString(),
-                            //     fit: BoxFit.fill,
-                            //   ),
-                            // ),
+                           
                           ],
                         ),
                       ),

@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 import '../../app_style/app_color.dart';
 
-class GovtDetails extends StatelessWidget {
- var arg = Get.arguments;
+class BankDetails extends StatelessWidget {
+  var arg = Get.arguments;
+
+  @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.button_color,
@@ -76,7 +76,7 @@ class GovtDetails extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                     ElevatedButton(
+                    ElevatedButton(
                         onPressed: () {
                           FlutterClipboard.copy(arg[2]['applylink']);
                           Get.snackbar("Copyed Link", arg[2]['applylink']);
@@ -98,7 +98,7 @@ class GovtDetails extends StatelessWidget {
                               child: Image.network(
                                 arg[4]['images'][index].url,
                                 fit: BoxFit.fill,
-                              ), //wait dissi
+                              ),
                             ),
                           );
                         }),
@@ -110,6 +110,6 @@ class GovtDetails extends StatelessWidget {
           ),
         ),
       ),
-     );
+    );
   }
 }

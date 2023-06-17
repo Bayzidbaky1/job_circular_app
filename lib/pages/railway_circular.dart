@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_circular_bd/pages/railway_details.dart';
+import 'package:jobs_circular_bd/pages/details_Page/railway_details.dart';
 
 import '../app_style/app_color.dart';
 import '../helper/Railway_jobs_helper.dart';
@@ -40,14 +40,24 @@ class _RailwayState extends State<Railway> {
                 itemCount: dataModel!.data!.length,
                 itemBuilder: (_, index) {
                   return InkWell(
-                    onTap: () {
-                      Get.to(RailwayDetails(data: {
-                        'title': dataModel!.data![index].title,
-                        'deadline': dataModel!.data![index].deadline,
-                        'applylink': dataModel!.data![index].applyLink,
-                        'type': dataModel!.data![index].type,
-                        'images': dataModel!.data![index].images![0].url,
-                      }));
+                   onTap: () {
+                      Get.to(() => RailwayDetails(), arguments: [
+                        {
+                          'title': dataModel!.data![index].title,
+                        },
+                        {
+                          'deadline': dataModel!.data![index].deadline,
+                        },
+                        {
+                          'applylink': dataModel!.data![index].applyLink,
+                        },
+                        {
+                          'type': dataModel!.data![index].type,
+                        },
+                        {
+                          'images': dataModel!.data![index].images,
+                        }
+                      ]);
                     },
                     child: Card(
                       elevation: 3,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../pages/details_Page/all_jobs_details.dart';
 
 class Drwar {
   static final drwr = Container(
@@ -11,104 +13,104 @@ class Drwar {
           ),
           onTap: () {}),
       ListTile(
-          leading: Text(
-            'সরকারি চাকরি',
-            style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-          onTap: () {}),
-           ListTile(
+        leading: Text(
+          'সরকারি চাকরি',
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
+        ),
+      ),
+      ListTile(
           leading: Text(
             'ব্যাংকের চাকরি',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'রেলওয়ে চাকরি',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'অন্যান্ন চাকরি',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'চাকরির গাইড',
-            style: TextStyle( 
+            style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'UK',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'US & Canada',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Paradise Papers',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Business',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Tech',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Science',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Health',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Entertainment',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Sports',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           onTap: () {}),
-           ListTile(
+      ListTile(
           leading: Text(
             'Stories',
             style: TextStyle(

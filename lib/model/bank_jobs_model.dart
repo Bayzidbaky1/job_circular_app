@@ -1,21 +1,21 @@
 // To parse this JSON data, do
 //
-//     final allJobsModel = allJobsModelFromJson(jsonString);
+//     final bankJobsModel = bankJobsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-AllJobsModel allJobsModelFromJson(String str) => AllJobsModel.fromJson(json.decode(str));
+BankJobsModel bankJobsModelFromJson(String str) => BankJobsModel.fromJson(json.decode(str));
 
-String allJobsModelToJson(AllJobsModel data) => json.encode(data.toJson());
+String bankJobsModelToJson(BankJobsModel data) => json.encode(data.toJson());
 
-class AllJobsModel {
+class BankJobsModel {
     List<Datum>? data;
 
-    AllJobsModel({
+    BankJobsModel({
         this.data,
     });
 
-    factory AllJobsModel.fromJson(Map<String, dynamic> json) => AllJobsModel(
+    factory BankJobsModel.fromJson(Map<String, dynamic> json) => BankJobsModel(
         data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
 

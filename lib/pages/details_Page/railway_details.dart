@@ -1,14 +1,31 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../app_style/app_color.dart';
 
-class GovtDetails extends StatelessWidget {
- var arg = Get.arguments;
+class RailwayDetails extends StatefulWidget {
+  @override
+  State<RailwayDetails> createState() => _RailwayDetailsState();
+}
+
+class _RailwayDetailsState extends State<RailwayDetails> {
+  var arg = Get.arguments;
+  late TransformationController controller;
+  TapDownDetails? tapDownDetails;
+  @override
+  void initState() {
+    controller = TransformationController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.button_color,
@@ -16,7 +33,7 @@ class GovtDetails extends StatelessWidget {
         title: Text(arg[0]['title']),
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width,
+        height: 800,
         child: Card(
           color: Colors.black,
           child: SingleChildScrollView(
@@ -76,7 +93,7 @@ class GovtDetails extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                     ElevatedButton(
+                    ElevatedButton(
                         onPressed: () {
                           FlutterClipboard.copy(arg[2]['applylink']);
                           Get.snackbar("Copyed Link", arg[2]['applylink']);
@@ -98,7 +115,7 @@ class GovtDetails extends StatelessWidget {
                               child: Image.network(
                                 arg[4]['images'][index].url,
                                 fit: BoxFit.fill,
-                              ), //wait dissi
+                              ),
                             ),
                           );
                         }),
@@ -110,6 +127,74 @@ class GovtDetails extends StatelessWidget {
           ),
         ),
       ),
-     );
+    );
   }
+
+  // Widget buildImage() => GestureDetector(
+  //   onDoubleTapDown: ((details) => tapDownDetails=details),
+  //       onDoubleTap: () {
+  //       final position = tapDownDetails!.localPosition;
+  //         final double scale = 3;
+  //         final x = -position.dx * (scale -1);
+  //         final y = -position.dy * (scale -1);
+
+  //         final zoomed = Matrix4.identity()
+  //         ..translate(x,y)
+  //         ..scale(scale);
+  //         final value = controller.value.isIdentity()?zoomed:Matrix4.identity();
+  //         controller.value = value;
+  //       },
+  //       child: InteractiveViewer(
+  //         clipBehavior: Clip.none,
+  //         panEnabled: false,
+  //         scaleEnabled: false,
+  //         transformationController: controller,
+  //         child: AspectRatio(
+  //           aspectRatio: 1,
+  //           child: ListView.builder(
+  //               padding: EdgeInsets.zero,
+  //               shrinkWrap: true,
+  //               primary: false,
+  //               itemCount: arg[4]['images'].length,
+  //               itemBuilder: (_, index) {
+  //                 return Padding(
+  //                   padding: const EdgeInsets.only(top: 15),
+  //                   child: Container(
+  //                     height: MediaQuery.of(context).size.height,
+  //                     width: MediaQuery.of(context).size.width,
+  //                     child: Image.network(
+  //                       arg[4]['images'][index].url,
+  //                       fit: BoxFit.fill,
+  //                     ),
+  //                   ),
+  //                 );
+  //               }),
+  //         ),
+  //       ),
+  //     );
+
+  Widget zoomImage() => AspectRatio(
+      aspectRatio: 1,
+      child: InteractiveViewer(
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(2),
+            child: ListView.builder(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                primary: false,
+                itemCount: arg[4]['images'].length,
+                itemBuilder: (_, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.network(
+                        arg[4]['images'][index].url,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  );
+                })),
+      ));
 }
