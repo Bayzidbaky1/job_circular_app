@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,10 +7,8 @@ import 'package:get/get.dart';
 import '../../app_style/app_color.dart';
 
 class GovtDetails extends StatelessWidget {
- var arg = Get.arguments;
+  var arg = Get.arguments;
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.button_color,
@@ -76,7 +76,7 @@ class GovtDetails extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                     ElevatedButton(
+                    ElevatedButton(
                         onPressed: () {
                           FlutterClipboard.copy(arg[2]['applylink']);
                           Get.snackbar("Copyed Link", arg[2]['applylink']);
@@ -91,16 +91,26 @@ class GovtDetails extends StatelessWidget {
                         primary: false,
                         itemCount: arg[4]['images'].length,
                         itemBuilder: (_, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 15),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              child: Image.network(
-                                arg[4]['images'][index].url,
-                                fit: BoxFit.fill,
-                              ), //wait dissi
-                            ),
-                          );
+                          return arg[4]['images'] != null
+                              ? Padding(
+                                  padding: const EdgeInsets.only(top: 15),
+                                  child: InteractiveViewer(
+                                    minScale: 0.1,
+                                    maxScale: 5.0,
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Image.network(
+                                        arg[4]['images'][index].url,
+                                        fit: BoxFit.fill,
+                                      ), //wait dissi
+                                    ),
+                                  ),
+                                )
+                              : Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColor.button_color,
+                                  ),
+                                );
                         }),
                     const SizedBox(
                       height: 8,
@@ -110,6 +120,6 @@ class GovtDetails extends StatelessWidget {
           ),
         ),
       ),
-     );
+    );
   }
 }

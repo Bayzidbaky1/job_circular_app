@@ -12,9 +12,11 @@ class _RailwayDetailsState extends State<RailwayDetails> {
   var arg = Get.arguments;
   late TransformationController controller;
   TapDownDetails? tapDownDetails;
+
   @override
   void initState() {
     controller = TransformationController();
+
     super.initState();
   }
 
@@ -110,15 +112,22 @@ class _RailwayDetailsState extends State<RailwayDetails> {
                         itemBuilder: (_, index) {
                           return Padding(
                             padding: const EdgeInsets.only(top: 15),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              child: Image.network(
-                                arg[4]['images'][index].url,
-                                fit: BoxFit.fill,
+                            child: InteractiveViewer(
+                              minScale: 0.1,
+                              maxScale: 5.0,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                child: Image.network(
+                                  arg[4]['images'][index].url,
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
                           );
                         }),
+
+                    // buildImage(),
+
                     const SizedBox(
                       height: 8,
                     ),
@@ -149,8 +158,32 @@ class _RailwayDetailsState extends State<RailwayDetails> {
   //         panEnabled: false,
   //         scaleEnabled: false,
   //         transformationController: controller,
-  //         child: AspectRatio(
-  //           aspectRatio: 1,
+  //         child: ListView.builder(
+  //             padding: EdgeInsets.zero,
+  //             shrinkWrap: true,
+  //             primary: false,
+  //             itemCount: arg[4]['images'].length,
+  //             itemBuilder: (_, index) {
+  //               return Padding(
+  //                 padding: const EdgeInsets.only(top: 15),
+  //                 child: Container(
+
+  //                   width: MediaQuery.of(context).size.width,
+  //                   child: Image.network(
+  //                     arg[4]['images'][index].url,
+  //                     fit: BoxFit.fill,
+  //                   ),
+  //                 ),
+  //               );
+  //             }),
+  //       ),
+  //     );
+
+  // Widget zoomImage() => AspectRatio(
+  //     aspectRatio: 1,
+  //     child: InteractiveViewer(
+  //       child: ClipRRect(
+  //           borderRadius: BorderRadius.circular(2),
   //           child: ListView.builder(
   //               padding: EdgeInsets.zero,
   //               shrinkWrap: true,
@@ -168,33 +201,6 @@ class _RailwayDetailsState extends State<RailwayDetails> {
   //                     ),
   //                   ),
   //                 );
-  //               }),
-  //         ),
-  //       ),
-  //     );
-
-  Widget zoomImage() => AspectRatio(
-      aspectRatio: 1,
-      child: InteractiveViewer(
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(2),
-            child: ListView.builder(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                primary: false,
-                itemCount: arg[4]['images'].length,
-                itemBuilder: (_, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        arg[4]['images'][index].url,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  );
-                })),
-      ));
+  //               })),
+  //     ));
 }

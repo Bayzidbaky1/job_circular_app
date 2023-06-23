@@ -92,12 +92,16 @@ class AllJobsDetails extends StatelessWidget {
                         itemBuilder: (_, index) {
                           return Padding(
                             padding: const EdgeInsets.only(top: 15),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              child: Image.network(
-                                arg[4]['images'][index].url,
-                                fit: BoxFit.fill,
-                              ), //wait dissi
+                            child: InteractiveViewer(
+                              minScale: 0.1,
+                              maxScale: 5.0,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                child: Image.network(
+                                  arg[4]['images'][index].url,
+                                  fit: BoxFit.fill,
+                                ), //wait dissi
+                              ),
                             ),
                           );
                         }),

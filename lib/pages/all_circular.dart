@@ -57,7 +57,7 @@ class _AllCircularState extends State<AllCircular> {
                           'images': dataModel!.data![index].images,
                         }
                       ]);
-                      ;
+                      
                     },
                     child: Card(
                       elevation: 3,
